@@ -1,0 +1,34 @@
+Docker Best Practices
+
+Use Official and Verified Images
+---------------------------------
+Official Images: Start with official images from Docker Hub when possible, as they are maintained and updated regularly.
+Minimal Base Images: Use minimal base images (like alpine) to reduce the attack surface and image size.
+
+2. Keep Images Small
+----------------------
+Multi-Stage Builds: Use multi-stage builds to minimize the final image size by only including necessary components.
+Remove Unnecessary Files: Clean up package lists, cache files, and other unnecessary files to keep the image lean.
+
+3. Tag Images Properly
+-----------------------
+Version Tagging: Tag images with version numbers (e.g., myapp:1.0) instead of just using latest to avoid ambiguity and ensure consistency across deployments.
+
+4. Manage Secrets Securely
+---------------------------
+Environment Variables: Avoid hardcoding secrets in your Dockerfile or image. Use environment variables or Docker secrets for sensitive information.
+Docker Secrets: Utilize Docker Swarm or Kubernetes secrets management for secure storage and usage of sensitive data.
+
+5. Use Dockerignore
+---------------------
+.dockerignore File: Include a .dockerignore file to prevent unnecessary files and directories from being added to the build context, speeding up the build process and keeping the image clean.
+
+6. Run as Non-Root User
+--------------------------
+Non-Root User: Create and run containers with a non-root user to improve security. You can add a user in the Dockerfile using RUN useradd -m myuser and switch to that user with USER myuser.
+
+7. Optimize Layer Caching
+---------------------------
+Layer Order: Order your Dockerfile instructions to maximize layer caching. Frequently changing commands should be at the end of the Dockerfile.
+Combine Commands: Combine commands where possible to reduce the number of layers, but balance it with readability.
+
