@@ -1,5 +1,6 @@
 FROM almalinux:9
-LABEL author="sivakumar reddy" \
-      company="joindevops" \
-      topic="dockerfiles" \
-      duration="2hrs"
+LABEL Project="BY" \
+      unit="DevOps" \
+      Demo="docker image build"
+
+# docker images -f 'label=project=BY'
